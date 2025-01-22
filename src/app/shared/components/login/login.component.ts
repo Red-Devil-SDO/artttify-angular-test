@@ -4,13 +4,16 @@ import { Store } from "@ngrx/store";
 
 import { selectAuthError, selectAuthLoading, selectIsAuthenticated } from "../../../store/auth/auth.selectors";
 import * as AuthActions from '../../../store/auth/auth.actions';
+import { IconComponent } from "../Icon/icon.component";
+import { IconKeys, IconNames } from "../Icon/const";
 
 @Component({
     selector: 'login',
     templateUrl: './login.component.html',
-    imports: [ReactiveFormsModule],
+    imports: [ReactiveFormsModule, IconComponent],
   })
 export class LoginComponent {
+  icons = IconKeys;
   loginForm = new FormGroup({
       email: new FormControl('', [Validators.required, Validators.email]),
       password: new FormControl('', [Validators.required, Validators.minLength(6)])
