@@ -1,3 +1,30 @@
+@font-face {
+  font-family: "Nekst-Thin";
+  src: url("/assets/fonts/Nekst-Thin.woff2") format("woff2"),
+    url('https://fonts.googleapis.com/css2?family=Audiowide&display=swap');
+  font-weight: normal;
+  font-style: normal;
+  font-display: block;
+}
+
+@font-face {
+  font-family: "Nekst-Regular";
+  src: url("/assets/fonts/Nekst-Regular.woff2") format("woff2"),
+    url('https://fonts.googleapis.com/css2?family=Audiowide&display=swap');
+  font-weight: normal;
+  font-style: normal;
+  font-display: block;
+}
+
+@font-face {
+  font-family: "Nekst-Medium";
+  src: url("/assets/fonts/Nekst-Medium.woff2") format("woff2"),
+    url('https://fonts.googleapis.com/css2?family=Audiowide&display=swap');
+  font-weight: normal;
+  font-style: normal;
+  font-display: block;
+}
+
 :root {
   --white: #fff;
   // --marine: #376a5f;
@@ -16,6 +43,8 @@
 
 body {
   background-color: var(--dark);
+  margin: 0;
+  padding: 0;
 }
 
 // body::after {
