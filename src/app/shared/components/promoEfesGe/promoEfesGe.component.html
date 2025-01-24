@@ -1,66 +1,215 @@
-<div style="min-width: 100vw; min-height: 100vh; display: flex; justify-content: center;">
-  <div style="flex-grow: 1; margin: 1% 1% 0 1%; background-color: #03030346;
-  backdrop-filter: blur(15px);
-  border-top-left-radius: 20px;
-  border-top-right-radius: 20px;">
-    <div style="margin: 0.65% 5.9%;">
-      <div style="height: 348px; border-radius: 15px; background-color: var(--dark); outline: dashed 1px #ffffffa4;
-      outline-offset: -7px; background-image: radial-gradient(circle at 25% 0%, #7237f294 0%, transparent 60%),
-      radial-gradient(circle at 75% 100%, #3effd857 0%, transparent 40%); position: relative; display: flex; justify-content: space-between;
-    clip-path: border-box;    user-select: none;
-    pointer-events: none;">
-        <div style="position: relative; z-index: 2;font-size: 34px; font-family: 'Nekst-Medium'; font-weight: 600; color: #FFF; margin-left: 4%;
-            text-shadow: 4px 4px 10px #000;display: flex
-;
+<style>
+  .root-container {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+  }
+
+  .content-container {
+    flex-grow: 1;
+    margin: 18px 18px 0 18px;
+    padding-bottom: 32px;
+    border-top-left-radius: 20px;
+    border-top-right-radius: 20px;
+    background-color: #03030346;
+    backdrop-filter: blur(15px);
+  }
+
+  .content-block {
+    margin: 12px 108px;
+    font-family: 'Nekst-Medium';
+  }
+
+  .banner {
+    display: flex;
+    justify-content: space-between;
+    position: relative;
+    height: 348px;
+    border-radius: 15px;
+    clip-path: border-box;
+    background-color: var(--dark);
+    outline: dashed 1px #ffffffa4;
+    outline-offset: -7px;
+    background-image: radial-gradient(circle at 25% 0%, #7237f294 0%, transparent 60%),
+      radial-gradient(circle at 75% 100%, #3effd857 0%, transparent 40%);
+    user-select: none;
+    pointer-events: none;
+  }
+
+  .text-container {
+    display: flex;
     flex-direction: column;
-    justify-content: center;">
-            <p>JOIN THE CONTEST<br/>AND WIN <span style="color: #79e7cd;">IPHONE 15</span></p>
-            <div style="font-size: 18px; font-weight: 300; display: flex;">
-                <div style="display: flex
-                ;
-                    flex-direction: column;
-                    align-items: center;">
+    position: relative;
+    margin-top: 64px;
+    margin-left: 61px;
+    color: #FFF;
+    text-shadow: 4px 4px 10px #000;
+    font-size: 34px;
+    font-weight: 600;
+    z-index: 2;
+  }
+
+  .text-container > p {
+    margin-block-start: 0;
+    margin-block-end: 0;
+  }
+
+  .text-highlighted {
+    color: #79e7cd;
+  }
+
+  .information-block {
+    display: flex;
+    font-size: 18px;
+    font-weight: 300;
+  }
+
+  .information-block-winners {
+    margin-left: 74px;
+  }
+
+  .info-block {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 48px;
+  }
+
+  .information-block-info {
+    display: flex;
+    margin-top: 5px;
+    padding: 12px 25px;
+    border-radius: 50px;
+    font-size: 20px;
+    background-color: #FFFFFF1F;
+  }
+
+  .deadline-date {
+    margin-left: 10px;
+  }
+
+  .winners-count {
+    margin-left: 5px;
+  }
+
+  .prize-container {
+    display: flex;
+    align-items: flex-end;
+    justify-content: flex-end;
+    position: relative;
+    width: 50%;
+    margin-right: 69px;
+    z-index: 1;
+  }
+
+  .prize-box-1 {
+    position: absolute;
+    top: 165px;
+    right: 351px;
+    z-index: -1;
+  }
+
+  .prize-box-2 {
+    position: absolute;
+    top: 55px;
+    right: 501px;
+    z-index: -1;
+  }
+
+  .information-container {
+    margin: -32px 35px;
+  }
+
+  .media-content {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+  }
+
+  .media-content > img {
+    margin-top: 100px;
+  }
+
+  .logo-block {
+    display: flex;
+    align-items: center;
+    position: relative;
+  }
+
+  .logo-block > span {
+    font-size: 29px;
+    color: #FFF;
+    margin-left: 20px;
+    margin-top: 18px;
+  }
+
+  .logo-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 149px;
+    height: 149px;
+    border-radius: 80px;
+    background-color: #FFF;
+  }
+
+  .logo {
+    position: relative;
+    top: 10px;
+    font-size: 42px;
+    color: #273877;
+  }
+</style>
+<div class="root-container">
+  <div class="content-container">
+    <div class="content-block">
+      <div class="banner">
+        <div class="text-container">
+            <p>JOIN THE CONTEST<br/>AND WIN <span class="text-highlighted">IPHONE 15</span></p>
+            <div class="information-block">
+                <div class="info-block">
                     <span>DEADLINE</span>
-                    <div style="    padding: 16px 20px;
-                    border-radius: 50px;
-                    background-color: #FFFFFF1F;
-                    display: flex
-                ; align-items: center; margin-top: 12px;">
+                    <div class="information-block-info">
                         <icon [iconName]="icons.calendar" />
-                        <span style="margin-left: 10px;">10.07.24</span>
+                        <span class="deadline-date">10.07.24</span>
                     </div>
                 </div>
-                <div style="display: flex
-                ;
-                    flex-direction: column;
-                    align-items: center;    margin-left: 22%;">
+                <div class="info-block information-block-winners">
                     <span>WINNERS</span>
-                    <div style="    padding: 16px 20px;
-                    border-radius: 50px;
-                    background-color: #FFFFFF1F;
-                    display: flex
-                ; align-items: center; margin-top: 12px;">
+                    <div class="information-block-info">
                         <icon [iconName]="icons.mark" />
-                        <span style="margin-left: 5px;">5</span>
+                        <span class="winners-count">5</span>
                     </div>
                 </div>
             </div>
         </div>
-        <div style="position: relative; z-index: 1; display: flex;
-            align-items: flex-end;
-            margin-right: 4%;
-            width: 50%;
-            justify-content: flex-end;">
+        <div class="prize-container">
             <img src="/assets/iphone.png" />
-            <img src="/assets/present-1.png" style="position: absolute;     right: 45%;
-            top: 45%;
-            z-index: -1;" />
-            <img src="/assets/present-2.png" style="position: absolute;    right: 65%;
-            top: 20%;
-            z-index: -1;" />
+            <img src="/assets/present-1.png" class="prize-box-1" />
+            <img src="/assets/present-2.png" class="prize-box-2" />
         </div>
       </div>
-      <div></div>
+      <div class="information-container">
+        <div class="media-content">
+          <div class="logo-block">
+            <div class="logo-container">
+              <icon class="logo" [iconName]="icons.efesGe" />
+            </div>
+            <span>Efes Georgia</span>
+          </div>
+          <img src="/assets/efes-promo.png" />
+        </div>
+        <div>
+          <span>HOW CAN I PARTICIPATE?</span>
+          <div>
+            
+          </div>
+          <div>
+            <a href="#">Record Video</a>
+            <a href="#">See Guidelines</a>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
 </div>
