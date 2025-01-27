@@ -8,16 +8,18 @@
   .content-container {
     flex-grow: 1;
     margin: 18px 18px 0 18px;
-    padding-bottom: 32px;
+    padding-bottom: 54px;
     border-top-left-radius: 20px;
     border-top-right-radius: 20px;
     background-color: #03030346;
     backdrop-filter: blur(15px);
+    transition: .5s;
   }
 
   .content-block {
     margin: 12px 108px;
-    font-family: 'Nekst-Medium';
+    font-family: "Nekst-Medium";
+    transition: .5s;
   }
 
   .banner {
@@ -30,7 +32,11 @@
     background-color: var(--dark);
     outline: dashed 1px #ffffffa4;
     outline-offset: -7px;
-    background-image: radial-gradient(circle at 25% 0%, #7237f294 0%, transparent 60%),
+    background-image: radial-gradient(
+        circle at 25% 0%,
+        #7237f294 0%,
+        transparent 60%
+      ),
       radial-gradient(circle at 75% 100%, #3effd857 0%, transparent 40%);
     user-select: none;
     pointer-events: none;
@@ -42,11 +48,12 @@
     position: relative;
     margin-top: 64px;
     margin-left: 61px;
-    color: #FFF;
+    color: #fff;
     text-shadow: 4px 4px 10px #000;
     font-size: 34px;
     font-weight: 600;
     z-index: 2;
+    transition: .5s;
   }
 
   .text-container > p {
@@ -62,6 +69,7 @@
     display: flex;
     font-size: 18px;
     font-weight: 300;
+    margin-top: 48px;
   }
 
   .information-block-winners {
@@ -72,7 +80,6 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    margin-top: 48px;
   }
 
   .information-block-info {
@@ -81,7 +88,7 @@
     padding: 12px 25px;
     border-radius: 50px;
     font-size: 20px;
-    background-color: #FFFFFF1F;
+    background-color: #ffffff1f;
   }
 
   .deadline-date {
@@ -100,6 +107,14 @@
     width: 50%;
     margin-right: 69px;
     z-index: 1;
+    transition: .5s;
+  }
+
+  .prize-iphone {
+    background-image: url('/assets/iphone.png');
+    width: 256px;
+    height: 304px;
+    transition: .5s;
   }
 
   .prize-box-1 {
@@ -118,16 +133,22 @@
 
   .information-container {
     margin: -32px 35px;
+    transition: .5s;
   }
 
   .media-content {
+    position: relative;
     display: flex;
     align-items: flex-start;
     justify-content: space-between;
   }
 
   .media-content > img {
+    position: absolute;
+    right: 0;
+    width: auto;
     margin-top: 100px;
+    transition: .5s;
   }
 
   .logo-block {
@@ -138,9 +159,10 @@
 
   .logo-block > span {
     font-size: 29px;
-    color: #FFF;
+    color: #fff;
     margin-left: 20px;
     margin-top: 18px;
+    transition: .5s;
   }
 
   .logo-container {
@@ -150,7 +172,8 @@
     width: 149px;
     height: 149px;
     border-radius: 80px;
-    background-color: #FFF;
+    background-color: #fff;
+    transition: .5s;
   }
 
   .logo {
@@ -158,6 +181,269 @@
     top: 10px;
     font-size: 42px;
     color: #273877;
+    transition: .5s;
+  }
+
+  .content {
+    margin-top: 27px;
+  }
+
+  .list-header {
+    font-size: 25px;
+    color: #FFF;
+  }
+
+  .list {
+    max-width: 500px;
+    padding-top: 25px;
+    padding-bottom: 55px;
+    font-family: sans-serif;
+  }
+
+  .list-item {
+    display: flex;
+    position: relative;
+    padding-bottom: 30px;
+  }
+
+  .list-item:last-child {
+    padding-bottom: 0;
+  }
+
+  .list-item:not(:last-child)::after {
+    content: "";
+    position: absolute;
+    left: 23px;
+    top: 47px;
+    width: 2px;
+    height: calc(100% - 47px);
+    background-image: linear-gradient(to bottom, #FFFFFF1A 50%, transparent 50%);
+    background-position: left top;
+    background-size: 2px 5px;
+    background-repeat: repeat-y;
+  }
+
+  .list-number {
+    width: 47px;
+    height: 47px;
+    background: #FFFFFF1A;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-size: 20px;
+    flex-shrink: 0;
+    position: relative;
+    z-index: 2;
+  }
+
+  .list-content {
+    display: flex;
+    align-items: center;
+    padding-left: 20px;
+    color: white;
+    font-size: 20px;
+  }
+
+  .icon {
+    display: inline-block;
+    width: 28px;
+    height: 28px;
+    background-color: #FFFFFF1A;
+    padding: 6px;
+    border-radius: 20px;
+    margin-right: 7px;
+  }
+
+  .icon-font {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .button-container {
+    display: flex;
+  }
+
+  .button, .button-purple {
+    display: flex;
+    justify-content: center;
+    width: 250px;
+    padding: 20px;
+    border-radius: 30px;
+    border: 1px solid transparent;
+    font-size: 16px;
+    position: relative;
+    color: #fff;
+    transition: .5s;
+    text-decoration: none;
+  }
+
+  .button:nth-child(odd) {
+    margin-right: 14px;
+  }
+
+  .button-purple {
+    background: linear-gradient(132.44deg, rgba(96, 68, 147, .7) 23.62%, rgba(29, 21, 45, .7) 156.03%);
+  }
+
+  .button:hover {
+    border: 1px solid white;
+  }
+
+  .button::after {
+    content: "";
+    position: absolute;
+    inset: -1px;
+    border: solid 1px transparent;
+    border-radius: 30px;
+    background: linear-gradient(rgb(255, 255, 255) 0%, rgba(255, 255, 255, .5) 50%, rgba(0, 0, 0, 0) 100%) border-box border-box;
+    mask: linear-gradient(rgb(255, 255, 255) 0px, rgb(255, 255, 255) 0px) padding-box exclude, linear-gradient(rgb(255, 255, 255) 0px, rgb(255, 255, 255) 0px);
+  }
+
+  @media (max-width: 1285px) {
+    .media-content > img {
+      width: 20vw;
+      min-width: 220px;
+    }
+  }
+
+  @media (max-width: 1200px) {
+    .content-block {
+      margin: 12px 9%;
+    }
+
+    .text-container {
+      font-size: 30px;
+    }
+
+    .information-block {
+      font-size: 15px;
+      margin-top: 24px;
+    }
+
+    .information-block-winners {
+      margin-left: 10%;
+    }
+
+    .information-block-info {
+      font-size: 17px;
+    }
+  }
+
+  @media (max-width: 1100px) {
+    .button {
+      width: 160px;
+    }
+  }
+
+  @media (max-width: 905px) {
+    .content-block {
+      margin: 12px 2%;
+    }
+
+    .logo-container {
+      width: 110px;
+      height: 110px;
+      margin-left: 35px;
+    }
+
+    .logo {
+      font-size: 32px;
+    }
+
+    .logo-block > span {
+      font-size: 20px;
+    }
+
+    .information-container {
+      margin: auto;
+      margin-top: -32px;
+    }
+
+    .media-content > img {
+      width: 29vw;
+      min-width: initial;
+    }
+
+    .list-header {
+      font-size: 20px;
+    }
+
+    .list-number, .list-content {
+      font-size: 15px;
+    }
+  }
+
+  @media (max-width: 700px) {
+    .content-container {
+      margin: auto;
+      border-radius: initial;
+    }
+  }
+
+  @media (max-width: 648px) {
+    .prize-container {
+      margin-right: 0;
+    }
+
+    .prize-iphone {
+      width: 103px;
+    }
+
+    .logo-container {
+      width: 80px;
+      height: 80px;
+    }
+
+    .logo-block > span {
+      font-size: 18px;
+      margin-top: 10px;
+      margin-left: 10px;
+    }
+
+    .logo {
+      font-size: 20px;
+      margin-top: -9px;
+    }
+
+    .content-wrapper {
+      flex-grow: 1;
+    }
+
+    .button-container {
+      flex-direction: column;
+      width: 100%;
+    }
+
+    .button {
+      width: 100%;
+      padding: 20px 0;
+    }
+
+    .button:nth-child(odd) {
+      margin-right: 0;
+      margin-bottom: 10px;
+    }
+  }
+
+  @media (max-width: 550px) {
+    .text-container {
+      margin-left: 24px;
+    }
+
+    .prize-container {
+      position: absolute;
+      right: 0px;
+      bottom: 0px;
+    }
+
+    .media-content > img {
+      width: 36vw;
+      min-width: 180px;
+      opacity: .2;
+    }
   }
 </style>
 <div class="root-container">
@@ -165,49 +451,83 @@
     <div class="content-block">
       <div class="banner">
         <div class="text-container">
-            <p>JOIN THE CONTEST<br/>AND WIN <span class="text-highlighted">IPHONE 15</span></p>
-            <div class="information-block">
-                <div class="info-block">
-                    <span>DEADLINE</span>
-                    <div class="information-block-info">
-                        <icon [iconName]="icons.calendar" />
-                        <span class="deadline-date">10.07.24</span>
-                    </div>
-                </div>
-                <div class="info-block information-block-winners">
-                    <span>WINNERS</span>
-                    <div class="information-block-info">
-                        <icon [iconName]="icons.mark" />
-                        <span class="winners-count">5</span>
-                    </div>
-                </div>
+          <p>
+            JOIN THE CONTEST<br />AND WIN
+            <span class="text-highlighted">IPHONE 15</span>
+          </p>
+          <div class="information-block">
+            <div class="info-block">
+              <span>DEADLINE</span>
+              <div class="information-block-info">
+                <icon [iconName]="icons.calendar" />
+                <span class="deadline-date">10.07.24</span>
+              </div>
             </div>
+            <div class="info-block information-block-winners">
+              <span>WINNERS</span>
+              <div class="information-block-info">
+                <icon [iconName]="icons.mark" />
+                <span class="winners-count">5</span>
+              </div>
+            </div>
+          </div>
         </div>
         <div class="prize-container">
-            <img src="/assets/iphone.png" />
-            <img src="/assets/present-1.png" class="prize-box-1" />
-            <img src="/assets/present-2.png" class="prize-box-2" />
+          <div class="prize-iphone"></div>
+          <img src="/assets/present-1.png" class="prize-box-1" />
+          <img src="/assets/present-2.png" class="prize-box-2" />
         </div>
       </div>
       <div class="information-container">
         <div class="media-content">
-          <div class="logo-block">
-            <div class="logo-container">
-              <icon class="logo" [iconName]="icons.efesGe" />
+          <div class="content-wrapper">
+            <div class="logo-block">
+              <div class="logo-container">
+                <icon class="logo" [iconName]="icons.efesGe" />
+              </div>
+              <span>Efes Georgia</span>
             </div>
-            <span>Efes Georgia</span>
+            <div class="content">
+              <span class="list-header">HOW CAN I PARTICIPATE?</span>
+              <div>
+                <div class="list">
+                  <div class="list-item">
+                    <div class="list-number">1</div>
+                    <div class="list-content">
+                      <img src="/assets/instagram-logo.svg" class="icon" alt="Instagram" />
+                      Make your IG profile public
+                    </div>
+                  </div>
+                  <div class="list-item">
+                    <div class="list-number">2</div>
+                    <div class="list-content">
+                      <icon [iconName]="icons.camera" className="icon icon-font" />
+                      Use our AR filter to shoot a video
+                    </div>
+                  </div>
+                  <div class="list-item">
+                    <div class="list-number">3</div>
+                    <div class="list-content">
+                      <img src="/assets/instagram-logo.svg" class="icon" alt="Instagram" />
+                      Share it on IG Reels with this hashtag #EFeslphoneChallenge
+                    </div>
+                  </div>
+                  <div class="list-item">
+                    <div class="list-number">4</div>
+                    <div class="list-content">
+                      <icon [iconName]="icons.heart" className="icon icon-font" />
+                      Get the most impressions
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="button-container">
+                <a href="#" class="button button-purple">Record Video</a>
+                <a href="#" class="button">See Guidelines</a>
+              </div>
+            </div>
           </div>
           <img src="/assets/efes-promo.png" />
-        </div>
-        <div>
-          <span>HOW CAN I PARTICIPATE?</span>
-          <div>
-            
-          </div>
-          <div>
-            <a href="#">Record Video</a>
-            <a href="#">See Guidelines</a>
-          </div>
         </div>
       </div>
     </div>

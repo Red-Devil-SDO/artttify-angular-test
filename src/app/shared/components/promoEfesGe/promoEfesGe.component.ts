@@ -1,4 +1,4 @@
-import { Component } from "@angular/core";
+import { Component, ViewEncapsulation } from "@angular/core";
 
 import { IconComponent } from "../Icon/icon.component";
 import { IconKeys } from "../Icon/const";
@@ -7,6 +7,7 @@ import { IconKeys } from "../Icon/const";
     selector: 'promo-efes-ge',
     templateUrl: './promoEfesGe.component.html',
     imports: [IconComponent],
+    encapsulation: ViewEncapsulation.None
 })
 
 export class PromoEfesGeComponent {
