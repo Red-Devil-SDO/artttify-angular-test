@@ -6,6 +6,7 @@ import { of } from 'rxjs';
 
 import { AuthService } from '../../core/services/auth.service';
 import * as AuthActions from './auth.actions';
+import { PATHS } from '../../app.routes';
 
 @Injectable()
 export class AuthEffects {
@@ -35,7 +36,7 @@ export class AuthEffects {
       this.actions$.pipe(
         ofType(AuthActions.loginSuccess),
         tap(() => {
-          this.router.navigate(['/dashboard']);
+          this.router.navigate([PATHS.HOME]);
         })
       ),
     { dispatch: false }
@@ -45,9 +46,11 @@ export class AuthEffects {
     () =>
       this.actions$.pipe(
         ofType(AuthActions.logout),
-        mergeMap(() => this.authService.logout().pipe(tap(() => {
-          this.router.navigate(['/login']);
-        })))
+        tap(() => {
+          this.authService.logout().subscribe(() => {
+            this.router.navigate([PATHS.HOME]);
+          });
+        })
       ),
     { dispatch: false }
   );

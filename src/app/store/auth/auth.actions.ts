@@ -2,6 +2,11 @@ import { createAction, props } from '@ngrx/store';
 
 import { IUser } from '../../core/services/auth.service';
 
+export const init = createAction(
+  '[Auth] Init',
+  props<{ user: IUser, token: string }>()
+);
+
 export const login = createAction(
   '[Auth] Login',
   props<{ email: string; password: string }>()

@@ -1,6 +1,6 @@
-import { Component, Input, OnInit } from "@angular/core";
+import { Component, Input, OnInit } from '@angular/core';
 
-import { IconNames, TIcon } from "./const";
+import { IconNames, TIcon } from './const';
 
 @Component({
     selector: 'icon',

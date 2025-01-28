@@ -1,6 +1,7 @@
-import { Component } from "@angular/core";
+import { Component } from '@angular/core';
 import { ReactiveFormsModule, FormControl, FormGroup, Validators } from '@angular/forms';
-import { Store } from "@ngrx/store";
+import { Location } from '@angular/common';
+import { Store } from '@ngrx/store';
 
 import { selectAuthError, selectAuthLoading, selectIsAuthenticated } from "../../../store/auth/auth.selectors";
 import * as AuthActions from '../../../store/auth/auth.actions';
@@ -23,7 +24,8 @@ export class LoginComponent {
   error: string | null = null;
 
   constructor(
-    private readonly store: Store
+    private readonly store: Store,
+    private readonly location: Location
   ) {
       this.store.select(selectAuthLoading).subscribe(state => this.loading = state);
       this.store.select(selectAuthError).subscribe(state => this.error = state);
@@ -36,8 +38,8 @@ export class LoginComponent {
     }
   }
 
-  handleClickLogout() {
-    this.store.dispatch(AuthActions.logout());
+  handleClickBack() {
+    this.location.back();
   }
 
   handleSubmit() {

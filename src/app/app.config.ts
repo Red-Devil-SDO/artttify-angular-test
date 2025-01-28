@@ -11,10 +11,11 @@ import { initApp } from './app.init';
 export const appConfig: ApplicationConfig = {
   providers: [
     provideRouter(routes),
-    provideStoreDevtools({
-      maxAge: 25,
-    }),
     provideAppInitializer(() => initApp(inject(AuthService), inject(Store<IStore>))),
     ...store,
+    provideStoreDevtools({
+      maxAge: 25,
+      logOnly: false,
+    }),
   ]
 };
