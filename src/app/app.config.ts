@@ -16,6 +16,6 @@ export const appConfig: ApplicationConfig = {
     provideStoreDevtools({
       maxAge: 25,
       logOnly: false,
-    }),
+    })
   ]
 };

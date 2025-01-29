@@ -1,12 +1,12 @@
 import { Routes } from '@angular/router';
 
-import { PromoEfesGeComponent } from './shared/components/promoEfesGe/promoEfesGe.component';
-import { LoginComponent } from './shared/components/login/login.component';
-import { AuthGuard } from './core/guards/auth.guard';
+import { PromoEfesGeComponent } from './pages/promoEfesGe/promoEfesGe.component';
+import { LoginComponent } from './pages/login/login.component';
+import { LogoutComponent } from './pages/logout/logout.component';
+import { RecordVideoComponent } from './pages/recordVideo/recordVideo.component';
+import { GuidelinesComponent } from './pages/guidelines/guidelines.component';
 import { LogoutGuard } from './core/guards/logout.guard';
-import { LogoutComponent } from './shared/components/logout/logout.component';
-import { RecordVideoComponent } from './shared/components/recordVideo/recordVideo.component';
-import { GuidelinesComponent } from './shared/components/guidelines/guidelines.component';
+import { AuthGuard } from './core/guards/auth.guard';
 
 export const PATHS = {
     ANY: '**',

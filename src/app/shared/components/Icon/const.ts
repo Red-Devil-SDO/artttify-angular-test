@@ -1,16 +1,6 @@
-export type TIcon = 'efesGe' | 'mark' | 'calendar' | 'camera' | 'heart' | 'eye' | 'eyeDisabled';
+export type TIcons = keyof typeof IconNames;
 
-export const IconKeys: Record<TIcon, TIcon> = {
-    efesGe: 'efesGe',
-    mark: 'mark',
-    calendar: 'calendar',
-    camera: 'camera',
-    heart: 'heart',
-    eye: 'eye',
-    eyeDisabled: 'eyeDisabled',
-};
-
-export const IconNames: Record<TIcon, string> = {
+export const IconNames = {
     efesGe: 'icon-efes-ge',
     mark: 'icon-mark',
     calendar: 'icon-calendar',
@@ -19,3 +9,7 @@ export const IconNames: Record<TIcon, string> = {
     eye: 'icon-eye',
     eyeDisabled: 'icon-eye-disabled',
 };
+
+export type TIconNames = { [T in TIcons]: T };
+
+export const IconKeys = Object.keys(IconNames).reduce((reducer, key) => ({ ...reducer, [key]: key }), {}) as TIconNames;

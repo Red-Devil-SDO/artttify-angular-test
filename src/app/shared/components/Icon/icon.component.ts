@@ -1,6 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 
-import { IconNames, TIcon } from './const';
+import { IconNames, TIcons } from './const';
 
 @Component({
     selector: 'icon',
@@ -8,12 +8,13 @@ import { IconNames, TIcon } from './const';
     styleUrl: './icon.component.scss',
 })
 export class IconComponent implements OnInit {
-    @Input() iconName: TIcon | undefined;
+    @Input({ required: true }) iconName: TIcons = '' as TIcons;
     @Input() className: string = '';
-    @Input() onClick: (evt: Event) => void | undefined = () => {};
-    icon: string | undefined;
+    @Input() onClick: (evt: Event) => void | undefined = () => { };
+
+    classes: string = '';
 
     ngOnInit() {
-        this.icon = IconNames[this.iconName as TIcon];
+        this.classes = [IconNames[this.iconName], this.className].join(' ');
     }
 }
