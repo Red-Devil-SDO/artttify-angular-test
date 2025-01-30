@@ -1,8 +1,9 @@
-import { booleanAttribute, Component, Input, OnInit, ViewEncapsulation } from "@angular/core";
+import { booleanAttribute, Component, computed, Input, OnInit, ViewEncapsulation } from "@angular/core";
 
 import { ButtonButtonComponent } from "./buttonTypes/button.component";
 import { ButtonLinkComponent } from "./buttonTypes/link.component";
 import { LogoutComponent } from "../../../pages/logout/logout.component";
+import { NgComponentOutlet } from "@angular/common";
 
 export type TButtonTypes = 'link' | 'button';
 
@@ -11,7 +12,7 @@ export type TButtonTypes = 'link' | 'button';
     templateUrl: './button.component.html',
     styleUrl: './button.component.scss',
     encapsulation: ViewEncapsulation.None,
-    imports: [ButtonButtonComponent, ButtonLinkComponent, LogoutComponent]
+    imports: [ButtonButtonComponent, ButtonLinkComponent, LogoutComponent, NgComponentOutlet]
 })
 export class ButtonComponent implements OnInit {
     @Input() htmlButtonType: string = 'button';
@@ -24,30 +25,26 @@ export class ButtonComponent implements OnInit {
     @Input() onKeyDown: (evt: KeyboardEvent) => void | undefined = () => { };
 
     classes: string = '';
-
-    getRenderedClass() {
-        return {
-            outlet: this.type === 'link'
-                ? ButtonLinkComponent
-                : ButtonButtonComponent,
-            inputs: this.type === 'link'
-                ? {
-                    href: this.href,
-                    target: this.target,
-                    className: this.classes,
-                    disabled: this.disabled,
-                    click: this.onClick,
-                    keydown: this.onKeyDown
-                }
-                : {
-                    htmlButtonType: this.htmlButtonType,
-                    className: this.classes,
-                    disabled: this.disabled,
-                    click: this.onClick,
-                    keydown: this.onKeyDown
-                }
-        };
-    }
+    buttonComponent: any = computed(() =>
+        this.type === 'link'
+            ? ButtonLinkComponent
+            : ButtonButtonComponent);
+    componentContext: any = computed(() => (this.type === 'link'
+        ? {
+            href: this.href,
+            target: this.target,
+            className: this.classes,
+            disabled: this.disabled,
+            onClick: this.onClick,
+            onKeyDown: this.onKeyDown
+        }
+        : {
+            htmlButtonType: this.htmlButtonType,
+            className: this.classes,
+            disabled: this.disabled,
+            onClick: this.onClick,
+            onKeyDown: this.onKeyDown
+        }));
 
     ngOnInit() {
         const classes = [this.className];

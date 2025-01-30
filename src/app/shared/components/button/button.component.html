@@ -1,10 +1,3 @@
-<!-- @if (type === 'link') {
-<a-button-link [href]="href" [target]="target" [className]="classes" (click)="onClick($event)" (keydown)="onKeyDown($event)">
-    <ng-content select="link-content" />
-</a-button-link>
-} @else if (type === 'button') {
-<a-button-button [htmlButtonType]="htmlButtonType" [className]="classes" [disabled]="disabled" (click)="onClick($event)" (keydown)="onKeyDown($event)">
-    <ng-content />
-</a-button-button>
-} -->
-<ng-container *ngComponentOutlet="getRenderedClass()" />
+<ng-container [ngComponentOutlet]="buttonComponent()" [ngComponentOutletInputs]="componentContext()">
+    <ng-content select="buttonComponent" ngProjectAs="buttonComponent" />
+</ng-container>
