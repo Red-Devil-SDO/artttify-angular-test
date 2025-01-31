@@ -3,8 +3,7 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen,
-      Ubuntu, sans-serif;
+    font-family: "Nekst-Medium";
   }
 
   body {
@@ -50,7 +49,8 @@
   }
 
   input[type="email"],
-  input[type="password"] {
+  input[type="password"],
+  input[type="text"] {
     width: 100%;
     padding: 1rem;
     border-radius: 8px;
@@ -115,14 +115,9 @@
     font-weight: 600;
   }
 
-  .sign-in-google {
-    background: rgba(255, 255, 255, 0.05);
-    color: #ffffff;
-    border: 1px solid rgba(255, 255, 255, 0.1);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 0.5rem;
+  .sign-in-google img {
+    width: 17px;
+    margin-left: 6px;
   }
 
   .divider {
@@ -156,6 +151,14 @@
     margin-left: 0.5rem;
   }
 
+  .button {
+    width: 100%;
+  }
+
+  .error {
+    color: #dc3545
+  }
+
   @media (max-width: 480px) {
     .container {
       margin: 1rem auto;
@@ -175,24 +178,28 @@
 
   <form [formGroup]="loginForm" (ngSubmit)="handleSubmit()">
     <div class="form-group">
-      <input
+      <a-input id="email" type="email" formControlName="email" placeholder="Email" [formGroup]="loginForm" (input)="handleInput()" />
+      <!-- <input
         id="email"
         type="email"
         formControlName="email"
         placeholder="Email"
         (input)="handleInput()"
-      />
+      /> -->
     </div>
 
     <div class="form-group">
-      <input
+      <a-input id="password" [type]="passwordFieldType()" formControlName="password" placeholder="Enter your password" [formGroup]="loginForm" (input)="handleInput()">
+        <icon [iconName]="eyeIcon()" (click)="handleClickShowPassword()" />
+      </a-input>
+      <!-- <input
         id="password"
         type="password"
         formControlName="password"
         placeholder="Enter your password"
         (input)="handleInput()"
       />
-      <span class="password-toggle">👁</span>
+      <span class="password-toggle">👁</span> -->
     </div>
     @if (error) {
     <div class="error">
@@ -209,29 +216,25 @@
     </div>
 
     @if (!loggedIn) {
-    <button type="submit" [disabled]="!loginForm.valid || loading">
+    <a-button
+      type="button"
+      className="button-grey"
+      htmlButtonType="submit"
+      [disabled]="!loginForm.valid || loading"
+    >
       {{ loading ? "Signing in..." : "Sign in" }}
-    </button>
+    </a-button>
     }
 
     <div class="divider">
       <span>Or</span>
     </div>
 
-    <button type="button" class="sign-in-google">
-      <img
-        src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjQiIGhlaWdodD0iMjQiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PHBhdGggZD0iTTIyLjU2IDEyLjI1Yy0uMi0xLjMtLjgtMi40LTEuNy0zLjJzLTIuMS0xLjQtMy40LTEuNGgtNy40Yy0xLjMgMC0yLjUuNS0zLjQgMS40cy0xLjUgMS45LTEuNyAzLjJjLS4xLjQtLjEuOC0uMSAxLjJzMCAuOC4xIDEuMmMuMiAxLjMuOCAyLjQgMS43IDMuMnMyLjEgMS40IDMuNCAxLjRoNy40YzEuMyAwIDIuNS0uNSAzLjQtMS40czEuNS0xLjkgMS43LTMuMmMuMS0uNC4xLS44LjEtMS4ycy4xLS44IDAtMS4yeiIgZmlsbD0iI2ZmZiIvPjwvc3ZnPg=="
-        alt="Google"
-        width="24"
-        height="24"
-      />
-      Sign in with Google
-    </button>
+    <a-button type="button" className="sign-in-google" [onClick]="handleTest">
+      Sign in with
+      <img src="/assets/google-logo.svg" />
+    </a-button>
   </form>
 
   <div class="signup-prompt">Don't have an account?<a href="#">Sign up</a></div>
-  <a-button type="button" [onClick]="handleTest">
-    asdasd
-    <img src="/assets/google-logo.svg" />
-  </a-button>
 </div>

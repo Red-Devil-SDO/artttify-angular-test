@@ -19,7 +19,7 @@
           "options": {
             "outputPath": "dist/artttify-angular-test",
             "index": "public/index.html",
-            "browser": "src/main.ts",
+            "browser": "src/bootstrap.ts",
             "polyfills": [
               "zone.js"
             ],
@@ -96,7 +96,7 @@
               }
             ],
             "styles": [
-              "src/styles.scss"
+              "public/styles.scss"
             ],
             "scripts": []
           }

@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, computed, signal, ViewEncapsulation } from '@angular/core';
 import { ReactiveFormsModule, FormControl, FormGroup, Validators } from '@angular/forms';
 import { Location } from '@angular/common';
 import { Router } from '@angular/router';
@@ -7,18 +7,20 @@ import { Store } from '@ngrx/store';
 import { AuthService } from '../../core/services/auth.service';
 import { selectAuthError, selectAuthLoading, selectIsAuthenticated } from "../../store/auth/auth.selectors";
 import * as AuthActions from '../../store/auth/auth.actions';
-import { IconComponent } from "../../shared/components/Icon/icon.component";
-import { IconNames } from "../../shared/components/Icon/const";
+import { IconComponent } from '../../shared/components/Icon/icon.component';
+import { IconKeys } from '../../shared/components/Icon/const';
 import { ButtonComponent } from '../../shared/components/button/button.component';
+import { InputComponent } from '../../shared/components/input/input.component';
 import { PATHS } from '../../app.routes';
 
 @Component({
   selector: 'login',
   templateUrl: './login.component.html',
-  imports: [ReactiveFormsModule, IconComponent, ButtonComponent],
+  imports: [ReactiveFormsModule, IconComponent, ButtonComponent, InputComponent],
+  encapsulation: ViewEncapsulation.None,
 })
 export class LoginComponent {
-  icons = IconNames;
+  icons = IconKeys;
   loginForm = new FormGroup({
     email: new FormControl('', [Validators.required, Validators.email]),
     password: new FormControl('', [Validators.required, Validators.minLength(6)])
@@ -26,6 +28,9 @@ export class LoginComponent {
   loggedIn: boolean = false;
   loading: boolean = false;
   error: string | null = null;
+  showPassword = signal(false);
+  passwordFieldType = computed(() => this.showPassword() ? 'text' : 'password');
+  eyeIcon = computed(() => this.showPassword() ? this.icons.eyeDisabled : this.icons.eye);
 
   constructor(
     private authService: AuthService,
@@ -52,6 +57,10 @@ export class LoginComponent {
     this.location.back();
 
     return false;
+  }
+
+  handleClickShowPassword() {
+    this.showPassword.set(!this.showPassword());
   }
 
   handleTest() {

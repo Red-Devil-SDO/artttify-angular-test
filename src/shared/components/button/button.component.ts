@@ -1,4 +1,4 @@
-import { booleanAttribute, Component, computed, Input, OnInit, ViewEncapsulation } from "@angular/core";
+import { booleanAttribute, Component, computed, Input, OnInit, OnChanges, SimpleChanges, ViewEncapsulation, ViewChild, TemplateRef, effect, signal } from "@angular/core";
 
 import { ButtonButtonComponent } from "./buttonTypes/button.component";
 import { ButtonLinkComponent } from "./buttonTypes/link.component";
@@ -12,42 +12,54 @@ export type TButtonTypes = 'link' | 'button';
     templateUrl: './button.component.html',
     styleUrl: './button.component.scss',
     encapsulation: ViewEncapsulation.None,
-    imports: [ButtonButtonComponent, ButtonLinkComponent, LogoutComponent, NgComponentOutlet]
+    standalone: true,
+    imports: [ButtonButtonComponent, ButtonLinkComponent, LogoutComponent, NgComponentOutlet],
 })
-export class ButtonComponent implements OnInit {
+export class ButtonComponent implements OnInit, OnChanges {
     @Input() htmlButtonType: string = 'button';
     @Input() className: string = '';
     @Input({ transform: booleanAttribute }) disabled: boolean = false;
     @Input() href: string = '';
     @Input() target: string = '_self';
     @Input() type: TButtonTypes = 'link';
-    @Input() onClick: (evt: MouseEvent) => void | undefined = () => { };
-    @Input() onKeyDown: (evt: KeyboardEvent) => void | undefined = () => { };
+    @Input() onClick: (event: MouseEvent) => void | undefined = () => { };
+    @Input() onKeyDown: (event: KeyboardEvent) => void | undefined = () => { };
+    @ViewChild('contentTpl', { static: true }) contentTemplate!: TemplateRef<any>;
 
     classes: string = '';
-    buttonComponent: any = computed(() =>
+    disabledState = signal(this.disabled);
+    buttonComponent = computed(() =>
         this.type === 'link'
             ? ButtonLinkComponent
             : ButtonButtonComponent);
-    componentContext: any = computed(() => (this.type === 'link'
+
+    componentContext = computed(() => (this.type === 'link'
         ? {
             href: this.href,
             target: this.target,
             className: this.classes,
-            disabled: this.disabled,
+            disabled: this.disabledState(),
             onClick: this.onClick,
-            onKeyDown: this.onKeyDown
+            onKeyDown: this.onKeyDown,
+            contentTemplate: this.contentTemplate
         }
         : {
             htmlButtonType: this.htmlButtonType,
             className: this.classes,
-            disabled: this.disabled,
+            disabled: this.disabledState(),
             onClick: this.onClick,
-            onKeyDown: this.onKeyDown
+            onKeyDown: this.onKeyDown,
+            contentTemplate: this.contentTemplate
         }));
 
+    ngOnChanges(changes: SimpleChanges) {
+        if (changes['disabled']) {
+            this.disabledState.set(changes['disabled'].currentValue);
+        }
+    }
+
     ngOnInit() {
-        const classes = [this.className];
+        const classes = ['button'];
 
         if (this.disabled && this.type === 'link') {
             classes.push('disabled');

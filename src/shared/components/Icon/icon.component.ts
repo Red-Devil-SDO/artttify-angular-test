@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input, OnChanges, OnInit, SimpleChanges } from '@angular/core';
 
 import { IconNames, TIcons } from './const';
 
@@ -7,14 +7,24 @@ import { IconNames, TIcons } from './const';
     templateUrl: './icon.component.html',
     styleUrl: './icon.component.scss',
 })
-export class IconComponent implements OnInit {
+export class IconComponent implements OnInit, OnChanges {
     @Input({ required: true }) iconName: TIcons = '' as TIcons;
     @Input() className: string = '';
     @Input() onClick: (evt: Event) => void | undefined = () => { };
 
     classes: string = '';
 
-    ngOnInit() {
+    private updateClasses () {
         this.classes = [IconNames[this.iconName], this.className].join(' ');
+    }
+
+    ngOnInit() {
+        this.updateClasses();
+    }
+
+    ngOnChanges(changes: SimpleChanges) {
+        if (changes['iconName']) {
+            this.updateClasses();
+        }
     }
 }
