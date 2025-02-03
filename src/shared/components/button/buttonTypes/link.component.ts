@@ -2,8 +2,8 @@ import {
   Component,
   Input,
   TemplateRef
-} from "@angular/core";
-import { NgTemplateOutlet } from "@angular/common";
+} from '@angular/core';
+import { NgTemplateOutlet } from '@angular/common';
 
 @Component({
   selector: 'a-button-link',

@@ -1,0 +1,419 @@
+.root-container {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+}
+
+.content-container {
+  flex-grow: 1;
+  margin: 18px 18px 0 18px;
+  padding-bottom: 54px;
+  border-top-left-radius: 20px;
+  border-top-right-radius: 20px;
+  background-color: #03030346;
+  backdrop-filter: blur(15px);
+  transition: 0.5s;
+}
+
+.content-block {
+  margin: 12px 108px;
+  font-family: "Nekst-Medium";
+  transition: 0.5s;
+}
+
+.banner {
+  display: flex;
+  justify-content: space-between;
+  position: relative;
+  height: 348px;
+  border-radius: 15px;
+  clip-path: border-box;
+  background-color: var(--dark);
+  outline: dashed 1px #ffffffa4;
+  outline-offset: -7px;
+  background-image: radial-gradient(
+      circle at 25% 0%,
+      #7237f294 0%,
+      transparent 60%
+    ),
+    radial-gradient(circle at 75% 100%, #3effd857 0%, transparent 40%);
+  user-select: none;
+  pointer-events: none;
+}
+
+.text-container {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  margin-top: 64px;
+  margin-left: 61px;
+  color: #fff;
+  text-shadow: 4px 4px 10px #000;
+  font-size: 34px;
+  font-weight: 600;
+  z-index: 2;
+  transition: 0.5s;
+}
+
+.text-container > p {
+  margin-block-start: 0;
+  margin-block-end: 0;
+}
+
+.text-highlighted {
+  color: #79e7cd;
+}
+
+.information-block {
+  display: flex;
+  font-size: 18px;
+  font-weight: 300;
+  margin-top: 48px;
+}
+
+.information-block-winners {
+  margin-left: 74px;
+}
+
+.info-block {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.information-block-info {
+  display: flex;
+  margin-top: 5px;
+  padding: 12px 25px;
+  border-radius: 50px;
+  font-size: 20px;
+  background-color: #ffffff1f;
+}
+
+.deadline-date {
+  margin-left: 10px;
+}
+
+.winners-count {
+  margin-left: 5px;
+}
+
+.prize-container {
+  display: flex;
+  align-items: flex-end;
+  justify-content: flex-end;
+  position: relative;
+  width: 50%;
+  margin-right: 69px;
+  z-index: 1;
+  transition: 0.5s;
+}
+
+.prize-iphone {
+  background-image: url("/assets/iphone.png");
+  width: 256px;
+  height: 304px;
+  transition: 0.5s;
+}
+
+.prize-box-1 {
+  position: absolute;
+  top: 165px;
+  right: 351px;
+  z-index: -1;
+}
+
+.prize-box-2 {
+  position: absolute;
+  top: 55px;
+  right: 501px;
+  z-index: -1;
+}
+
+.information-container {
+  margin: -32px 35px;
+  transition: 0.5s;
+}
+
+.media-content {
+  position: relative;
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+}
+
+.media-content > img {
+  position: absolute;
+  right: 0;
+  width: auto;
+  margin-top: 100px;
+  transition: 0.5s;
+}
+
+.logo-block {
+  display: flex;
+  align-items: center;
+  position: relative;
+}
+
+.logo-block > span {
+  font-size: 29px;
+  color: #fff;
+  margin-left: 20px;
+  margin-top: 18px;
+  transition: 0.5s;
+}
+
+.logo-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 149px;
+  height: 149px;
+  border-radius: 80px;
+  background-color: #fff;
+  transition: 0.5s;
+}
+
+.logo {
+  position: relative;
+  top: 10px;
+  font-size: 42px;
+  color: #273877;
+  transition: 0.5s;
+}
+
+.content {
+  margin-top: 27px;
+}
+
+.list-header {
+  font-size: 25px;
+  color: #fff;
+}
+
+.list {
+  max-width: 500px;
+  padding-top: 25px;
+  padding-bottom: 55px;
+  font-family: sans-serif;
+}
+
+.list-item {
+  display: flex;
+  position: relative;
+  padding-bottom: 30px;
+}
+
+.list-item:last-child {
+  padding-bottom: 0;
+}
+
+.list-item:not(:last-child)::after {
+  content: "";
+  position: absolute;
+  left: 23px;
+  top: 47px;
+  width: 2px;
+  height: calc(100% - 47px);
+  background-image: linear-gradient(to bottom, #ffffff1a 50%, transparent 50%);
+  background-position: left top;
+  background-size: 2px 5px;
+  background-repeat: repeat-y;
+}
+
+.list-number {
+  width: 47px;
+  height: 47px;
+  background: #ffffff1a;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  font-size: 20px;
+  flex-shrink: 0;
+  position: relative;
+  z-index: 2;
+}
+
+.list-content {
+  display: flex;
+  align-items: center;
+  padding-left: 20px;
+  color: white;
+  font-size: 20px;
+}
+
+.icon {
+  display: inline-block;
+  width: 28px;
+  height: 28px;
+  background-color: #ffffff1a;
+  padding: 6px;
+  border-radius: 20px;
+  margin-right: 7px;
+}
+
+.icon-font {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.button-container {
+  display: flex;
+}
+
+.button {
+  width: 250px;
+}
+
+.button:nth-child(odd) {
+  margin-right: 14px !important;
+}
+
+@media (max-width: 1285px) {
+  .media-content > img {
+    width: 20vw;
+    min-width: 220px;
+  }
+}
+
+@media (max-width: 1200px) {
+  .content-block {
+    margin: 12px 9%;
+  }
+
+  .text-container {
+    font-size: 29px;
+  }
+
+  .information-block {
+    font-size: 15px;
+    margin-top: 24px;
+  }
+
+  .information-block-winners {
+    margin-left: 10%;
+  }
+
+  .information-block-info {
+    font-size: 17px;
+  }
+}
+
+@media (max-width: 1100px) {
+  .button {
+    width: 160px !important;
+  }
+}
+
+@media (max-width: 905px) {
+  .content-block {
+    margin: 12px 2%;
+  }
+
+  .logo-container {
+    width: 110px;
+    height: 110px;
+    margin-left: 35px;
+  }
+
+  .logo {
+    font-size: 32px;
+  }
+
+  .logo-block > span {
+    font-size: 20px;
+  }
+
+  .information-container {
+    margin: auto;
+    margin-top: -32px;
+  }
+
+  .media-content > img {
+    width: 29vw;
+    min-width: initial;
+  }
+
+  .list-header {
+    font-size: 20px;
+  }
+
+  .list-number,
+  .list-content {
+    font-size: 15px;
+  }
+}
+
+@media (max-width: 700px) {
+  .content-container {
+    margin: auto;
+    border-radius: initial;
+  }
+}
+
+@media (max-width: 648px) {
+  .prize-container {
+    margin-right: 0;
+  }
+
+  .prize-iphone {
+    width: 103px;
+  }
+
+  .logo-container {
+    width: 80px;
+    height: 80px;
+  }
+
+  .logo-block > span {
+    font-size: 18px;
+    margin-top: 10px;
+    margin-left: 10px;
+  }
+
+  .logo {
+    font-size: 20px;
+    margin-top: -9px;
+  }
+
+  .content-wrapper {
+    flex-grow: 1;
+  }
+
+  .button-container {
+    flex-direction: column;
+    width: 100%;
+  }
+
+  .button {
+    width: 100% !important;
+    padding: 20px 0 !important;
+  }
+
+  .button:nth-child(odd) {
+    margin-right: 0 !important;
+    margin-bottom: 10px !important;
+  }
+}
+
+@media (max-width: 550px) {
+  .text-container {
+    margin-left: 24px;
+  }
+
+  .prize-container {
+    position: absolute;
+    right: 0px;
+    bottom: 0px;
+  }
+
+  .media-content > img {
+    width: 36vw;
+    min-width: 180px;
+    opacity: 0.2;
+  }
+}

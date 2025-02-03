@@ -1,8 +1,8 @@
 .button {
   display: flex;
   justify-content: center;
-  padding: 20px;
-  border-radius: 30px;
+  padding: 23.5px 20px;
+  border-radius: 35px;
   background-color: transparent;
   border: 1px solid transparent;
   font-size: 16px;
@@ -27,7 +27,7 @@
     position: absolute;
     inset: -1px;
     border: solid 1px transparent;
-    border-radius: 30px;
+    border-radius: 35px;
     background: linear-gradient(
         #fff 0%,
         rgba(255, 255, 255, 0.5) 50%,

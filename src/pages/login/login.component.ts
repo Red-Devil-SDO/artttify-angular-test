@@ -1,12 +1,12 @@
 import { Component, computed, signal, ViewEncapsulation } from '@angular/core';
-import { ReactiveFormsModule, FormControl, FormGroup, Validators } from '@angular/forms';
+import { ReactiveFormsModule, FormGroup } from '@angular/forms';
 import { Location } from '@angular/common';
 import { Router } from '@angular/router';
 import { Store } from '@ngrx/store';
 
+import * as AuthActions from '../../store/auth/auth.actions';
 import { AuthService } from '../../core/services/auth.service';
 import { selectAuthError, selectAuthLoading, selectIsAuthenticated } from "../../store/auth/auth.selectors";
-import * as AuthActions from '../../store/auth/auth.actions';
 import { IconComponent } from '../../shared/components/Icon/icon.component';
 import { IconKeys } from '../../shared/components/Icon/const';
 import { ButtonComponent } from '../../shared/components/button/button.component';
@@ -21,10 +21,7 @@ import { PATHS } from '../../app.routes';
 })
 export class LoginComponent {
   icons = IconKeys;
-  loginForm = new FormGroup({
-    email: new FormControl('', [Validators.required, Validators.email]),
-    password: new FormControl('', [Validators.required, Validators.minLength(6)])
-  });
+  loginForm = new FormGroup({});
   loggedIn: boolean = false;
   loading: boolean = false;
   error: string | null = null;
@@ -61,10 +58,6 @@ export class LoginComponent {
 
   handleClickShowPassword() {
     this.showPassword.set(!this.showPassword());
-  }
-
-  handleTest() {
-    console.log('Test button clicked');
   }
 
   handleSubmit() {
