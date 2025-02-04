@@ -12,7 +12,8 @@
     border-radius: 35px;
     background: linear-gradient(90deg, #fff -100%, transparent 120%) border-box
       border-box;
-    mask: linear-gradient(#fff 0px, #fff 0px) padding-box exclude,
+    mask:
+      linear-gradient(#fff 0px, #fff 0px) padding-box exclude,
       linear-gradient(#fff 0px, #fff 0px);
   }
 }

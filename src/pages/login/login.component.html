@@ -1,188 +1,7 @@
-<style>
-  * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: "Nekst-Medium";
-  }
-
-  body {
-    min-height: 100vh;
-    color: #ffffff;
-    padding: 1rem;
-  }
-
-  body .bg-container .purple {
-    top: -17vh;
-    left: -48vw;
-    right: auto;
-  }
-
-  body .bg-container .green {
-    top: 90vh;
-    left: -14vw;
-  }
-
-  .back-button {
-    position: absolute;
-    top: 30px;
-    left: 52px;
-    color: #fff;
-    text-decoration: none;
-    font-size: 0.9rem;
-  }
-
-  .container {
-    max-width: 400px;
-    width: 100%;
-    margin: 9rem auto;
-    text-align: center;
-  }
-
-  h1 {
-    font-size: 2.5rem;
-    font-weight: 600;
-    margin-bottom: 1rem;
-  }
-
-  .subtitle {
-    color: rgba(255, 255, 255, 0.8);
-    margin-bottom: 2rem;
-  }
-
-  .form-group {
-    margin-bottom: 1.5rem;
-    position: relative;
-  }
-
-  input[type="email"],
-  input[type="password"] {
-    width: 100%;
-  }
-
-  input:focus {
-    outline: none;
-  }
-
-  .forgot-password {
-    text-align: right;
-    margin-bottom: 1.5rem;
-  }
-
-  .forgot-password a {
-    color: rgba(255, 255, 255, 0.8);
-    text-decoration: none;
-    font-size: 0.9rem;
-  }
-
-  .remember-me {
-    display: flex;
-    align-items: center;
-    gap: 0.5rem;
-    margin-bottom: 1.5rem;
-  }
-
-  .remember-me div {
-    display: flex;
-    align-items: center;
-  }
-
-  .remember-me input {
-    margin-right: 5px;
-  }
-
-  .sign-in {
-    background: #ffffff;
-    color: #1a1a2e;
-    font-weight: 600;
-  }
-
-  .sign-in-google img {
-    width: 17px;
-    margin-left: 6px;
-  }
-
-  .divider {
-    display: flex;
-    align-items: center;
-    text-align: center;
-    margin: 1.5rem 0;
-    color: rgba(255, 255, 255, 0.6);
-  }
-
-  .divider::before,
-  .divider::after {
-    content: "";
-    flex: 1;
-    border: solid 1px;
-    border-bottom: 0px;
-    border-image: linear-gradient(90deg, transparent 10%, #fff 200%);
-    border-image-slice: 1;
-  }
-
-  .divider::after {
-    border-image: linear-gradient(270deg, transparent 10%, #fff 200%);
-    border-image-slice: 1;
-  }
-
-  .divider span {
-    padding: 0 1rem;
-  }
-
-  .signup-prompt {
-    margin-top: 2rem;
-    color: rgba(255, 255, 255, 0.8);
-  }
-
-  .signup-prompt a {
-    color: #fff;
-    text-decoration: none;
-    font-weight: 600;
-    margin-left: 0.5rem;
-  }
-
-  .button {
-    width: 100%;
-  }
-
-  .error {
-    color: #dc3545;
-    position: absolute;
-    bottom: -1.3em;
-    left: 2em;
-    user-select: none;
-  }
-
-  .password-field span {
-    position: absolute;
-    top: 25px;
-    right: 16px;
-    font-size: 18px;
-    opacity: 0.2;
-  }
-
-  @media (max-width: 480px) {
-    .container {
-      margin: 1rem auto;
-      margin-top: 5rem;
-    }
-
-    .back-button {
-      left: 1rem;
-    }
-
-    h1 {
-      font-size: 2rem;
-    }
-  }
-</style>
-
 <a href="#" (click)="handleClickBack()" class="back-button">< Back</a>
-
 <div class="container">
   <h1>Welcome back!</h1>
   <p class="subtitle">Please enter your details to sign in</p>
-
   <form [formGroup]="loginForm" (ngSubmit)="handleSubmit()">
     <div class="form-group">
       <a-input
@@ -194,7 +13,6 @@
         (input)="handleInput()"
       />
     </div>
-
     <div class="form-group">
       <a-input
         id="password"
@@ -207,42 +25,37 @@
       >
         <icon [iconName]="eyeIcon()" (click)="handleClickShowPassword()" />
         @if (error) {
-        <div class="error">
-          {{ error }}
-        </div>
+          <div class="error">
+            {{ error }}
+          </div>
         }
       </a-input>
     </div>
     <div class="forgot-password">
       <a href="#">Forgot Password?</a>
     </div>
-
     <div class="remember-me">
       <a-input id="remember" type="checkbox" [formGroup]="loginForm">
         <label for="remember">Remember me</label>
       </a-input>
     </div>
-
     @if (!loggedIn) {
-    <a-button
-      type="button"
-      className="button-grey"
-      htmlButtonType="submit"
-      [disabled]="!loginForm.valid || loading"
-    >
-      {{ loading ? "Signing in..." : "Sign in" }}
-    </a-button>
+      <a-button
+        type="button"
+        className="button-grey"
+        htmlButtonType="submit"
+        [disabled]="!loginForm.valid || loading"
+      >
+        {{ loading ? "Signing in..." : "Sign in" }}
+      </a-button>
     }
   </form>
-
   <div class="divider">
     <span>Or</span>
   </div>
-
   <a-button type="button" className="sign-in-google">
     Sign in with
     <img src="/assets/google-logo.svg" />
   </a-button>
-
   <div class="signup-prompt">Don't have an account?<a href="#">Sign up</a></div>
 </div>

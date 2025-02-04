@@ -1,7 +1,7 @@
-import { createReducer, on, provideState } from '@ngrx/store';
+import { createReducer, on, provideState } from "@ngrx/store";
 
-import { IUser } from '../../core/services/auth.service';
-import * as AuthActions from './auth.actions';
+import { IUser } from "../../core/services/auth.service";
+import * as AuthActions from "./auth.actions";
 
 export interface IAuthState {
   user: IUser | null;
@@ -12,7 +12,7 @@ export interface IAuthState {
 export const initialState: IAuthState = {
   user: null,
   loading: false,
-  error: null
+  error: null,
 };
 
 export const authReducer = createReducer(
@@ -21,25 +21,25 @@ export const authReducer = createReducer(
     ...state,
     user,
     loading: false,
-    error: null
+    error: null,
   })),
-  on(AuthActions.login, state => ({
+  on(AuthActions.login, (state) => ({
     ...state,
     loading: true,
-    error: null
+    error: null,
   })),
   on(AuthActions.loginSuccess, (state, { user }) => ({
     ...state,
     user,
     loading: false,
-    error: null
+    error: null,
   })),
   on(AuthActions.loginFailure, (state, { error }) => ({
     ...state,
     loading: false,
-    error
+    error,
   })),
-  on(AuthActions.logout, () => initialState)
+  on(AuthActions.logout, () => initialState),
 );
 
-export const authStoreState = provideState('auth', authReducer);
+export const authStoreState = provideState("auth", authReducer);

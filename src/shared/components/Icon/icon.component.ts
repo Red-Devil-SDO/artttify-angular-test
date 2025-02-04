@@ -1,21 +1,27 @@
-import { Component, Input, OnChanges, OnInit, SimpleChanges } from '@angular/core';
+import {
+  Component,
+  Input,
+  OnChanges,
+  OnInit,
+  SimpleChanges,
+} from "@angular/core";
 
-import { IconNames, TIcons } from './const';
+import { IconNames, TIcons } from "./const";
 
 @Component({
-  selector: 'icon',
-  templateUrl: './icon.component.html',
-  styleUrl: './icon.component.scss',
+  selector: "icon",
+  templateUrl: "./icon.component.html",
+  styleUrl: "./icon.component.scss",
 })
 export class IconComponent implements OnInit, OnChanges {
-  @Input({ required: true }) iconName: TIcons = '' as TIcons;
-  @Input() className: string = '';
-  @Input() onClick: (evt: Event) => void | undefined = () => { };
+  @Input({ required: true }) iconName: TIcons = "" as TIcons;
+  @Input() className: string = "";
+  @Input() onClick: (evt: Event) => void | undefined = () => {};
 
-  classes: string = '';
+  classes: string = "";
 
   private updateClasses() {
-    this.classes = [IconNames[this.iconName], this.className].join(' ');
+    this.classes = [IconNames[this.iconName], this.className].join(" ");
   }
 
   ngOnInit() {
@@ -23,7 +29,7 @@ export class IconComponent implements OnInit, OnChanges {
   }
 
   ngOnChanges(changes: SimpleChanges) {
-    if (changes['iconName']) {
+    if (changes["iconName"]) {
       this.updateClasses();
     }
   }

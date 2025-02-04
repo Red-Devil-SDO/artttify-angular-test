@@ -1,19 +1,19 @@
-import { Injectable } from '@angular/core';
-import { Location } from '@angular/common';
-import { CanActivate, Router } from '@angular/router';
+import { Injectable } from "@angular/core";
+import { Location } from "@angular/common";
+import { CanActivate, Router } from "@angular/router";
 
-import { AuthService } from '../services/auth.service';
-import { PATHS } from '../../app.routes';
+import { AuthService } from "../services/auth.service";
+import { PATHS } from "../../app.routes";
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: "root",
 })
 export class AuthGuard implements CanActivate {
   constructor(
     private readonly authService: AuthService,
     private readonly router: Router,
-    private readonly location: Location
-  ) { }
+    private readonly location: Location,
+  ) {}
 
   canActivate(): boolean {
     if (this.authService.isAuthenticated()) {

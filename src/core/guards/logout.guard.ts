@@ -1,21 +1,21 @@
-import { Injectable } from '@angular/core';
-import { CanActivate, Router } from '@angular/router';
-import { Store } from '@ngrx/store';
+import { Injectable } from "@angular/core";
+import { CanActivate, Router } from "@angular/router";
+import { Store } from "@ngrx/store";
 
-import * as AuthActions from '../../store/auth/auth.actions';
-import { IStore } from '../../store/store';
-import { PATHS } from '../../app.routes';
-import { AuthService } from '../services/auth.service';
+import * as AuthActions from "../../store/auth/auth.actions";
+import { IStore } from "../../store/store";
+import { PATHS } from "../../app.routes";
+import { AuthService } from "../services/auth.service";
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: "root",
 })
 export class LogoutGuard implements CanActivate {
   constructor(
     private authService: AuthService,
     private store: Store<IStore>,
-    private router: Router
-  ) { }
+    private router: Router,
+  ) {}
 
   canActivate(): boolean {
     if (this.authService.isAuthenticated()) {
@@ -29,4 +29,3 @@ export class LogoutGuard implements CanActivate {
     return false;
   }
 }
-

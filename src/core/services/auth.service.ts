@@ -1,5 +1,5 @@
-import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
+import { Injectable } from "@angular/core";
+import { Observable } from "rxjs";
 
 export interface IUser {
   id: number;
@@ -13,17 +13,17 @@ export interface ILoginResponse {
 }
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: "root",
 })
 export class AuthService {
   private mockUser: IUser = {
     id: 1,
-    email: 'nuser@mail.com',
-    name: 'Noname User'
+    email: "nuser@mail.com",
+    name: "Noname User",
   };
-  private MOCK_TOKEN = 'token';
-  private STORAGE_AUTH_KEY = 'auth_token';
-  private CORRECT_PASS = 'password';
+  private MOCK_TOKEN = "token";
+  private STORAGE_AUTH_KEY = "auth_token";
+  private CORRECT_PASS = "password";
   private readonly currentUser: IUser | null = null;
 
   constructor() {
@@ -45,13 +45,13 @@ export class AuthService {
   }
 
   login(email: string, password: string): Observable<ILoginResponse> {
-    return new Observable(observer => {
+    return new Observable((observer) => {
       setTimeout(() => {
         if (email === this.mockUser.email && password === this.CORRECT_PASS) {
           localStorage.setItem(this.STORAGE_AUTH_KEY, this.MOCK_TOKEN);
           observer.next({ user: this.mockUser, token: this.MOCK_TOKEN });
         } else {
-          observer.error({ code: 403, message: 'Invalid credentials' });
+          observer.error({ code: 403, message: "Invalid credentials" });
         }
 
         observer.complete();
@@ -60,7 +60,7 @@ export class AuthService {
   }
 
   logout(): Observable<void> {
-    return new Observable(observer => {
+    return new Observable((observer) => {
       setTimeout(() => {
         localStorage.removeItem(this.STORAGE_AUTH_KEY);
         observer.next();
