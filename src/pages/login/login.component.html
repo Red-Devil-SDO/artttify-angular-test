@@ -1,0 +1,61 @@
+<a href="#" (click)="handleClickBack()" class="back-button">< Back</a>
+<div class="container">
+  <h1>Welcome back!</h1>
+  <p class="subtitle">Please enter your details to sign in</p>
+  <form [formGroup]="loginForm" (ngSubmit)="handleSubmit()">
+    <div class="form-group">
+      <a-input
+        id="email"
+        type="email"
+        placeholder="Email"
+        required="true"
+        [formGroup]="loginForm"
+        (input)="handleInput()"
+      />
+    </div>
+    <div class="form-group">
+      <a-input
+        id="password"
+        [type]="passwordFieldType()"
+        placeholder="Password"
+        required="true"
+        wrapperClassName="password-field"
+        [formGroup]="loginForm"
+        (input)="handleInput()"
+      >
+        <icon [iconName]="eyeIcon()" (click)="handleClickShowPassword()" />
+        @if (error) {
+          <div class="error">
+            {{ error }}
+          </div>
+        }
+      </a-input>
+    </div>
+    <div class="forgot-password">
+      <a href="#">Forgot Password?</a>
+    </div>
+    <div class="remember-me">
+      <a-input id="remember" type="checkbox" [formGroup]="loginForm">
+        <label for="remember">Remember me</label>
+      </a-input>
+    </div>
+    @if (!loggedIn) {
+      <a-button
+        type="button"
+        className="button-grey"
+        htmlButtonType="submit"
+        [disabled]="!loginForm.valid || loading"
+      >
+        {{ loading ? "Signing in..." : "Sign in" }}
+      </a-button>
+    }
+  </form>
+  <div class="divider">
+    <span>Or</span>
+  </div>
+  <a-button type="button" className="sign-in-google">
+    Sign in with
+    <img src="/assets/google-logo.svg" />
+  </a-button>
+  <div class="signup-prompt">Don't have an account?<a href="#">Sign up</a></div>
+</div>

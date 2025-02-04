@@ -1,6 +1,9 @@
 # ArtttifyAngularTest
 
 This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 19.1.1.
+To run or build project please follow instructions below.
+Login page has hardcoded user and password, to authenticate use 'nuser@mail.com/password' credentials.
+To logout type in address next path, an ex.: 'http://localhost:4200/logout'.
 
 ## Development server
 

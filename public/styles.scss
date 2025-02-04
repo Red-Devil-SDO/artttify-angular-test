@@ -1,0 +1,47 @@
+@font-face {
+  font-family: "Nekst-Thin";
+  src:
+    url("/assets/fonts/Nekst-Thin.woff2") format("woff2"),
+    url("https://fonts.googleapis.com/css2?family=Audiowide&display=swap");
+  font-weight: normal;
+  font-style: normal;
+  font-display: block;
+}
+
+@font-face {
+  font-family: "Nekst-Regular";
+  src:
+    url("/assets/fonts/Nekst-Regular.woff2") format("woff2"),
+    url("https://fonts.googleapis.com/css2?family=Audiowide&display=swap");
+  font-weight: normal;
+  font-style: normal;
+  font-display: block;
+}
+
+@font-face {
+  font-family: "Nekst-Medium";
+  src:
+    url("/assets/fonts/Nekst-Medium.woff2") format("woff2"),
+    url("https://fonts.googleapis.com/css2?family=Audiowide&display=swap");
+  font-weight: normal;
+  font-style: normal;
+  font-display: block;
+}
+
+:root {
+  --white: #fff;
+  --dark: #08070a;
+  --marine-a46: #3effd877;
+  --marine-light-a43: #7cefd86d;
+  --purple-light: #dcccff;
+  --purple-a46: #7237f275;
+  --purple-dark-a70: #403066b3;
+  --purple-light-a70: #9764e1b3;
+}
+
+body {
+  background-color: var(--dark);
+  margin: 0;
+  padding: 0;
+  min-width: 310px;
+}

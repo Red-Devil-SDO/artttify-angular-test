@@ -1,0 +1,12 @@
+<div [formGroup]="formGroup" [class]="classesWrapper">
+  <input
+    [id]="id"
+    [class]="classes"
+    [type]="type"
+    [formControlName]="id"
+    [placeholder]="placeholder"
+    (input)="onInput($event)"
+    (change)="handleChange($event)"
+  />
+  <ng-content></ng-content>
+</div>
